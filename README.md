@@ -27,20 +27,20 @@ To use this app:
   This app allows for users to manage backend requests for a social network app that contains; users, who each contain an array of thoughts, and thoughts contain an array of reactions.
 
   The mongoose based requests allow for this database to be manipulated via:
-  User:
-  - POST createUser
-  - GET getAllUser
-  - PUT updateUser
-  - DEL deleteUser
-  Thoughts:
-  - POST addThought
-  - GET getThoughtbyId
-  - GET getAllThought
-  - PUT updateThought
-  - DEL removeThought
-  Reactions:
-  - POST addReaction
-  - DEL removeReaction
+  - User:
+    - POST createUser
+    - GET getAllUser
+    - PUT updateUser
+    - DEL deleteUser
+  - Thoughts:
+    - POST addThought
+    - GET getThoughtbyId
+    - GET getAllThought
+    - PUT updateThought
+    - DEL removeThought
+  - Reactions:
+    - POST addReaction
+    - DEL removeReaction
 
 This app also features virtuals to give reactionCount (based on the number of objects in the Reaction array), and getter a function to format the createdAt from the default ISO to something more readable.
   ## License
