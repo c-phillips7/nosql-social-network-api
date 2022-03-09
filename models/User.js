@@ -10,7 +10,7 @@ const UserSchema = new Schema({
         required: 'username is required',
         trim: true
     },
-    
+
     email: {
         type: String,
         required: 'email is required',
@@ -20,7 +20,7 @@ const UserSchema = new Schema({
 
     createdAt: {
         type: Date,
-        default: Date.now,
+        default: Date.now
         //TODO: getter function to format date
     },
 

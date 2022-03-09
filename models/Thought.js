@@ -14,7 +14,7 @@ const ReactionsSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now,
+        default: Date.now
         // TODO:  function to format date using getter method
     }
 },
@@ -35,7 +35,7 @@ const ThoughtSchema = new Schema ({
     },
     createdAt: {
         type: Date,
-        default: Date.now,
+        default: Date.now
         //TODO: format date with getter
     },
     reactions: [ReactionsSchema]
