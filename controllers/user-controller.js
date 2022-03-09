@@ -12,10 +12,7 @@ const userController = {
             .select('-__v')
             .sort({_id:-1})
             .then(dbUserData => res.json(dbUserData))
-            .catch(err => {
-                console.log(err);
-                res.status(400).json(err);
-            })
+            .catch(err => res.status(400).json(err))
     },
 
     //get user by id
@@ -40,7 +37,13 @@ const userController = {
     },
 
     //update user by id
-    updateUser() {
+    updateUser({ params, body }, res) {
+        User.findByIdAndUpdate({_id:params.id}, body, { new: true })
+            .then(dbUserData => {
+                if(!dbUserData) return res.status(404).json({message: 'No user with this id'})
+                res.json(dbUserData)
+            })
+            .catch(err => res.status(400).json(err))
 
     },
 
