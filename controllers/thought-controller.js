@@ -43,8 +43,15 @@ const thoughtController = {
 
     //delete thought bu _id
 
-    removeThought() {
-
+    removeThought({ params }, res) {
+        Thought.findOneAndDelete({ _id:params.thoughtId })
+            .then(deletedThought => {
+                if (!deletedThought) {
+                    return res.status(404).json({ message: "No thought with this id" })
+                }
+                return res.json("Thought deleted")
+            })
+            .catch(err => res.json(err));
     },
 
     // add reaction to thought
