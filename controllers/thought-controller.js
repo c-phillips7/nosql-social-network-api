@@ -11,8 +11,18 @@ const thoughtController = {
     },
 
     //get one thought by _id
-    getThoughtbyId() {
-
+    getThoughtbyId({ params }, res) {
+        Thought.findOne({ _id:params.thoughtId })
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({message: "No thought found with this id"})
+                return
+            }
+            res.json(dbThoughtData)
+        })
+        .catch(err => {
+            res.status(400).json(err)
+        });
     },
     // create new thought, then push thought's _id to associated user
 
@@ -27,7 +37,7 @@ const thoughtController = {
             })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
-                    res.status(404).json({ message: "no user found with this id" });
+                    res.status(404).json({ message: "no thought found with this id" });
                     return
                 }
                 res.json(dbThoughtData)
