@@ -2,8 +2,8 @@ const router = require('express').Router();
 
 // import functions from controller
 const {
-    getAllThought,
-    addthought,
+    getAllThoughts,
+    addThought,
     updateThought,
     removeThought,
     getOneThought,
@@ -13,8 +13,8 @@ const {
 
 //write logic to correlate functions to http routes
 router.route('/')
-    .get(getAllThought)
-    .post(addthought)
+    .get(getAllThoughts)
+    .post(addThought)
 
 router.route('/:thoughtId')
     .put(updateThought)

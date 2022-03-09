@@ -33,7 +33,7 @@ const UserSchema = new Schema({
 {
     toJSON: {
         vitruals: true,
-        getters: true
+        // getters: true
     },
     id: false
 });
