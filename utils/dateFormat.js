@@ -1,0 +1,1 @@
+// getter function to format the date given by created at by mongoose
