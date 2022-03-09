@@ -25,8 +25,8 @@ const thoughtController = {
         });
     },
 
-    // create new thought, then push thought's _id to associated user
-
+    // create new thought
+        // created thought then pushed to associated user via _id
     addThought({ body }, res) {
         Thought.create(body)
             .then(({ _id }) => {
@@ -46,8 +46,7 @@ const thoughtController = {
             .catch(err => res.json(err));
     },
 
-    //update thought by _id
-
+    // update thought by _id
     updateThought({ params, body }, res) {
         Thought.findByIdAndUpdate({ _id:params.thoughtId }, body, { new: true })
             .then(dbThoughtData => {
@@ -60,8 +59,7 @@ const thoughtController = {
             .catch(err => res.json(err));
     },
 
-    //delete thought bu _id
-
+    // delete thought by _id
     removeThought({ params }, res) {
         Thought.findOneAndDelete({ _id:params.thoughtId })
             .then(deletedThought => {
@@ -87,7 +85,8 @@ const thoughtController = {
             .catch(err => res.json(err));
     },
 
-    //delete reaction from thought
+    // delete reaction from thought by _id
+        // requires both thoughtId and reactionId
     removeReaction({ params }, res) {
         Thought.findOneAndUpdate(
             { _id:params.thoughtId },

@@ -2,7 +2,7 @@ const res = require('express/lib/response');
 const { User } = require('../models');
 
 const userController = {
-    //get all users
+    // get all users
     getAllUser(req, res) {
         User.find({})
             .populate({
@@ -15,7 +15,7 @@ const userController = {
             .catch(err => res.status(400).json(err))
     },
 
-    //get user by id
+    // get one user by _id
     getUserbyId({ params }, res) {
         User.findOne({_id:params.id})
         // Errors out if non valid _id entered
@@ -33,14 +33,14 @@ const userController = {
         })
     },
 
-    //create user
+    // create new user
     createUser({ body }, res) {
         User.create(body)
             .then(dbUserData => res.json(dbUserData))
             .catch(err => res.json(err))
     },
 
-    //update user by id
+    // update user by _id
     updateUser({ params, body }, res) {
         User.findByIdAndUpdate({_id:params.id}, body, { new: true })
             .then(dbUserData => {
@@ -54,7 +54,7 @@ const userController = {
 
     },
 
-    //delete user
+    // delete user by _id
     deleteUser({ params }, res){
         User.findOneAndDelete({_id:params.id})
             .then(dbUserData => {
