@@ -3,7 +3,10 @@ const router = require('express').Router();
 // import functions from controller
 const{
     createUser,
-    getAllUser
+    getAllUser,
+    getUserbyId,
+    updateUser,
+    deleteUser,
 } = require('../../controllers/user-controller')
 
 
@@ -15,5 +18,11 @@ router
     .get(getAllUser)
     .post(createUser);
 
+// all GET, POST, and DELETE requests at /api/users/:id
+router
+    .route('/:id')
+    .get(getUserbyId)
+    .put(updateUser)
+    .delete(deleteUser)
 
 module.exports = router;

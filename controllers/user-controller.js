@@ -18,6 +18,9 @@ const userController = {
     },
 
     //get user by id
+    getUserbyId() {
+
+    },
 
     //create user
     createUser({ body }, res) {
@@ -27,8 +30,14 @@ const userController = {
     },
 
     //update user by id
+    updateUser() {
+
+    },
 
     //delete user
+    deleteUser(){
+
+    },
 
     //bonus
         //add friend
