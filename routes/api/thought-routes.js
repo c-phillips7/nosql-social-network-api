@@ -6,21 +6,24 @@ const {
     addThought,
     updateThought,
     removeThought,
-    getOneThought,
+    getThoughtbyId,
     addReaction,
     removeReaction
 } = require('../../controllers/thought-controller')
 
 //write logic to correlate functions to http routes
+// all routes for '/api/thoughts'
 router.route('/')
     .get(getAllThoughts)
     .post(addThought)
 
+// all routes for '/api/thoughts/:thoughtId'
 router.route('/:thoughtId')
     .put(updateThought)
     .delete(removeThought)
-    .get(getOneThought)
+    .get(getThoughtbyId)
 
+// reaction routes
 router.route('/:thoughtId/')
     .post(addReaction)
 
