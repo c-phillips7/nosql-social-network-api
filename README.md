@@ -1,4 +1,4 @@
-# nosql-social-network-api# Social Network API
+# Social Network API
 
   An api using nosql database and mongoose to handle backend requests.
 
