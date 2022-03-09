@@ -24,6 +24,7 @@ const thoughtController = {
             res.status(400).json(err)
         });
     },
+
     // create new thought, then push thought's _id to associated user
 
     addThought({ body }, res) {
@@ -47,8 +48,16 @@ const thoughtController = {
 
     //update thought by _id
 
-    updateThought() {
-
+    updateThought({ params, body }, res) {
+        Thought.findByIdAndUpdate({ _id:params.thoughtId }, body, { new: true })
+            .then(dbThoughtData => {
+                if (!dbThoughtData) {
+                    res.status(404).json({ message: "no thought found with this id" });
+                    return
+                }
+                res.json(dbThoughtData)
+            })
+            .catch(err => res.json(err));
     },
 
     //delete thought bu _id
