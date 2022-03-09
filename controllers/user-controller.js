@@ -1,3 +1,4 @@
+const res = require('express/lib/response');
 const { User } = require('../models');
 
 const userController = {
@@ -18,8 +19,17 @@ const userController = {
     },
 
     //get user by id
-    getUserbyId() {
-
+    getUserbyId({ params }, res) {
+        User.findOne({_id:params.id})
+        .populate({
+            path: 'thoughts',
+            select: '-__v'
+        })
+        .select('-__v')
+        .then(dbUserData => {
+            if(!dbUserData) return res.status(404).json({message: 'No user with this id'})
+            res.json(dbUserData)
+        })
     },
 
     //create user
